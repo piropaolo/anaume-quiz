@@ -5,6 +5,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
@@ -16,11 +17,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-    private val kanjiApi: KanjiApi = KanjiApi(
-        client,
-        moshi,
-        this
-    )
+    private val kanjiApi: KanjiApi = KanjiApi(client, moshi)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +25,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     }
 
     fun randomQuiz(view: View) = launch {
-        kanjiApi.setQuizMap("1")
+        val quizMap = kanjiApi.getQuizMap("1")
+
+        textView0.text = quizMap[0]?.get(0).toString()
+        textView1.text = quizMap[1]?.get(0).toString()
+        textView2.text = quizMap[2]?.get(1).toString()
+        textView3.text = quizMap[3]?.get(1).toString()
     }
 }

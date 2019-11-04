@@ -14,3 +14,15 @@ data class Variant(
     val pronounced: String,
     val priorities: List<String>
 )
+
+data class Kanji(
+    val kanji: String,
+    val grade: Int,
+    val stroke_count: Int,
+    val meanings: List<String>,
+    val kun_readings: List<String>,
+    val on_readings: List<String>,
+    val name_readings: List<String>,
+    val jlpt: String,
+    val unicode: String
+)

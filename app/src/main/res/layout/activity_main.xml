@@ -11,6 +11,8 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,8 +22,11 @@
         android:id="@+id/textView0"
         android:layout_width="64dp"
         android:layout_height="64dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintEnd_toStartOf="@+id/editText"
         app:layout_constraintTop_toTopOf="@+id/editText" />
 
@@ -31,6 +36,9 @@
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintStart_toEndOf="@+id/editText"
         app:layout_constraintTop_toTopOf="@+id/editText" />
 
@@ -39,16 +47,20 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintStart_toStartOf="@+id/editText"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="64dp"
-        android:layout_height="64dp"
+        android:layout_height="80dp"
         android:layout_marginTop="32dp"
         android:ems="10"
+        android:gravity="center"
         android:inputType="textPersonName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
         app:layout_constraintStart_toStartOf="@+id/textView1"
         app:layout_constraintTop_toBottomOf="@+id/textView1" />
 

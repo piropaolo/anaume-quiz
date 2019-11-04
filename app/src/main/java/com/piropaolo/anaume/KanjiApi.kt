@@ -1,6 +1,5 @@
 package com.piropaolo.anaume
 
-import android.widget.TextView
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -14,8 +13,7 @@ import kotlin.random.Random
 
 class KanjiApi(
     private val client: OkHttpClient,
-    private val moshi: Moshi,
-    private val mainActivity: MainActivity
+    private val moshi: Moshi
 ) {
 
     companion object {
@@ -42,7 +40,7 @@ class KanjiApi(
 
             client.newCall(request).execute().use { response ->
                 if (!response.isSuccessful) throw IOException("Unexpected code $response")
-                val kanjis: List<String>? = adapter.fromJson(response.body!!.source())
+                val kanjis = adapter.fromJson(response.body!!.source())
                 return@withContext kanjis?.get(Random.nextInt(kanjis.size))
             }
         }
@@ -84,24 +82,5 @@ class KanjiApi(
                 }
             }
             return@withContext results
-        }
-
-    suspend fun setQuizMap(grade: String): Unit =
-        withContext(Dispatchers.Main) {
-            val map = getQuizMap(grade)
-            mainActivity.runOnUiThread {
-                mainActivity.findViewById<TextView>(R.id.textView0).apply {
-                    text = map[0]?.get(0).toString()
-                }
-                mainActivity.findViewById<TextView>(R.id.textView1).apply {
-                    text = map[1]?.get(0).toString()
-                }
-                mainActivity.findViewById<TextView>(R.id.textView2).apply {
-                    text = map[2]?.get(1).toString()
-                }
-                mainActivity.findViewById<TextView>(R.id.textView3).apply {
-                    text = map[3]?.get(1).toString()
-                }
-            }
         }
 }
