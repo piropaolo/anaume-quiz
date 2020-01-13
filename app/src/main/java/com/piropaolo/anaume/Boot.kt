@@ -10,8 +10,8 @@ suspend fun main() {
     val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-    val kanjiApi = KanjiApi(client, moshi)
+    val kanjiAlive = KanjiAlive(client, moshi)
 
-    val randomKanji = kanjiApi.getRandomKanji("1")
-    println("randomKanji = ${randomKanji}")
+    val quiz = kanjiAlive.getQuizMap(1)
+    println("quiz = ${quiz}")
 }

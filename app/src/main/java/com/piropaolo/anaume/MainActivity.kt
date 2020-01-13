@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-    private val kanjiApi: KanjiApi = KanjiApi(client, moshi)
+    private val kanjiAlive: KanjiAlive = KanjiAlive(client, moshi)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     }
 
     fun randomQuiz(view: View) = launch {
-        val quizMap = kanjiApi.getQuizMap("1")
+        val quizMap = kanjiAlive.getQuizMap(1)
 
         textView0.text = quizMap[0]?.get(0).toString()
         textView1.text = quizMap[1]?.get(0).toString()
