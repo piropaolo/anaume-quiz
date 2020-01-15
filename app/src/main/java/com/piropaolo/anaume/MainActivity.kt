@@ -24,12 +24,31 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         setContentView(R.layout.activity_main)
     }
 
-    fun randomQuiz(view: View) = launch {
+    fun getRandomQuiz(view: View) = launch {
         val quizMap = kanjiAlive.getQuizMap(1)
+
+        println("quizMap.get(0) = ${quizMap[0]?.get(1)}")
 
         textView0.text = quizMap[0]?.get(0).toString()
         textView1.text = quizMap[1]?.get(0).toString()
         textView2.text = quizMap[2]?.get(1).toString()
         textView3.text = quizMap[3]?.get(1).toString()
+    }
+
+    fun checkSolution(view: View) = launch {
+        val kanji = editText.text.toString()
+        val words = setOf(
+            textView0.text.toString() + kanji,
+            textView1.text.toString() + kanji,
+            kanji + textView2.text.toString(),
+            kanji + textView3.text.toString()
+        )
+
+        println(
+            "kanjiAlive.checkSolution(kanji, words) = ${kanjiAlive.checkSolution(
+                kanji,
+                words
+            )}"
+        )
     }
 }

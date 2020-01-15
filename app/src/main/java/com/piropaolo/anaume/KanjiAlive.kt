@@ -1,10 +1,12 @@
 package com.piropaolo.anaume
 
+import android.annotation.SuppressLint
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import okhttp3.Headers
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException
@@ -15,13 +17,18 @@ class KanjiAlive(
     private val client: OkHttpClient,
     private val moshi: Moshi
 ) {
+    companion object {
+        val headers: Headers = Headers.Builder()
+            .add("X-RapidAPI-Host", "kanjialive-api.p.rapidapi.com")
+            .add("X-RapidAPI-Key", "509fe509d2msh2b5e520111ae506p14ffeejsn675c7a6af087")
+            .build()
+    }
 
-    suspend fun getKanjiDetails(kanji: String) =
+    suspend fun getKanjiDetails(kanji: String): KanjiDetails? =
         withContext(Dispatchers.Default) {
             val request = Request.Builder()
                 .url("https://kanjialive-api.p.rapidapi.com/api/public/kanji/$kanji")
-                .header("X-RapidAPI-Host", "kanjialive-api.p.rapidapi.com")
-                .header("X-RapidAPI-Key", "509fe509d2msh2b5e520111ae506p14ffeejsn675c7a6af087")
+                .headers(headers)
                 .build()
             val adapter: JsonAdapter<KanjiDetails> = moshi.adapter(KanjiDetails::class.java)
 
@@ -31,12 +38,11 @@ class KanjiAlive(
             }
         }
 
-    suspend fun getKanjisFromGrade(grade: Int) =
+    suspend fun getKanjisFromGrade(grade: Int): List<GradeKanji>? =
         withContext(Dispatchers.Default) {
             val request = Request.Builder()
                 .url("https://kanjialive-api.p.rapidapi.com/api/public/search/advanced?grade=$grade")
-                .header("X-RapidAPI-Host", "kanjialive-api.p.rapidapi.com")
-                .header("X-RapidAPI-Key", "509fe509d2msh2b5e520111ae506p14ffeejsn675c7a6af087")
+                .headers(headers)
                 .build()
             val type: ParameterizedType =
                 Types.newParameterizedType(List::class.java, GradeKanji::class.java)
@@ -54,13 +60,14 @@ class KanjiAlive(
             kanjis?.get(Random.nextInt(kanjis.size))?.kanji?.character
         }
 
-    suspend fun getExamples(kanji: String) =
+    suspend fun getExamples(kanji: String): Set<String>? =
         withContext(Dispatchers.Default) {
             getKanjiDetails(kanji)?.examples
-                ?.map { it.japanese.split("（").first() }
+                ?.map { it.japanese.split("（").first() }?.toSet()
         }
 
-    suspend fun getQuizMap(grade: Int) =
+    @SuppressLint("UseSparseArrays")
+    suspend fun getQuizMap(grade: Int): Map<Int, String> =
         withContext(Dispatchers.Default) {
             val results = HashMap<Int, String>()
             var lefts: List<String>?
@@ -76,5 +83,10 @@ class KanjiAlive(
             rights?.shuffled()?.take(2)?.forEach { results[results.size] = it }
             lefts?.shuffled()?.take(2)?.forEach { results[results.size] = it }
             results
+        }
+
+    suspend fun checkSolution(kanji: String, words: Set<String>): Boolean =
+        withContext(Dispatchers.Default) {
+            getExamples(kanji)?.containsAll(words) ?: false
         }
 }
