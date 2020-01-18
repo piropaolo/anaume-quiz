@@ -1,4 +1,4 @@
-package com.piropaolo.anaume
+package com.piropaolo.anaume.domain
 
 data class Meaning(
     val english: String

@@ -1,6 +1,8 @@
-package com.piropaolo.anaume
+package com.piropaolo.anaume.api
 
 import android.annotation.SuppressLint
+import com.piropaolo.anaume.domain.GradeKanji
+import com.piropaolo.anaume.domain.KanjiDetails
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -30,7 +32,9 @@ class KanjiAlive(
                 .url("https://kanjialive-api.p.rapidapi.com/api/public/kanji/$kanji")
                 .headers(headers)
                 .build()
-            val adapter: JsonAdapter<KanjiDetails> = moshi.adapter(KanjiDetails::class.java)
+            val adapter: JsonAdapter<KanjiDetails> = moshi.adapter(
+                KanjiDetails::class.java
+            )
 
             client.newCall(request).execute().use { response ->
                 if (!response.isSuccessful) throw IOException("Unexpected code $response")

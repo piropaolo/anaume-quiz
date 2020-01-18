@@ -1,5 +1,6 @@
 package com.piropaolo.anaume
 
+import com.piropaolo.anaume.api.KanjiAlive
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient

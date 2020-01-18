@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activity.MainActivity">
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/text_view_1"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView0"
+        android:id="@+id/text_view_0"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="8dp"
@@ -27,11 +27,11 @@
         android:layout_marginRight="32dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintEnd_toStartOf="@+id/edit_text"
+        app:layout_constraintTop_toTopOf="@+id/edit_text" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/text_view_2"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginStart="32dp"
@@ -39,21 +39,21 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintStart_toEndOf="@+id/edit_text"
+        app:layout_constraintTop_toTopOf="@+id/edit_text" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/text_view_3"
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="@+id/edit_text"
+        app:layout_constraintTop_toBottomOf="@+id/edit_text" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/edit_text"
         android:layout_width="64dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
@@ -61,8 +61,8 @@
         android:gravity="center"
         android:inputType="textPersonName"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintStart_toStartOf="@+id/textView1"
-        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+        app:layout_constraintStart_toStartOf="@+id/text_view_1"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_1" />
 
     <Button
         android:id="@+id/random_button"

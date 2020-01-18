@@ -1,8 +1,10 @@
-package com.piropaolo.anaume
+package com.piropaolo.anaume.activity
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.piropaolo.anaume.R
+import com.piropaolo.anaume.api.KanjiAlive
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,7 +19,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     private val moshi = Moshi.Builder()
         .add(KotlinJsonAdapterFactory())
         .build()
-    private val kanjiAlive: KanjiAlive = KanjiAlive(client, moshi)
+    private val kanjiAlive: KanjiAlive =
+        KanjiAlive(client, moshi)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,19 +32,19 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
         println("quizMap.get(0) = ${quizMap[0]?.get(1)}")
 
-        textView0.text = quizMap[0]?.get(0).toString()
-        textView1.text = quizMap[1]?.get(0).toString()
-        textView2.text = quizMap[2]?.get(1).toString()
-        textView3.text = quizMap[3]?.get(1).toString()
+        text_view_0.text = quizMap[0]?.get(0).toString()
+        text_view_1.text = quizMap[1]?.get(0).toString()
+        text_view_2.text = quizMap[2]?.get(1).toString()
+        text_view_3.text = quizMap[3]?.get(1).toString()
     }
 
     fun checkSolution(view: View) = launch {
-        val kanji = editText.text.toString()
+        val kanji = edit_text.text.toString()
         val words = setOf(
-            textView0.text.toString() + kanji,
-            textView1.text.toString() + kanji,
-            kanji + textView2.text.toString(),
-            kanji + textView3.text.toString()
+            text_view_0.text.toString() + kanji,
+            text_view_1.text.toString() + kanji,
+            kanji + text_view_2.text.toString(),
+            kanji + text_view_3.text.toString()
         )
 
         println(
