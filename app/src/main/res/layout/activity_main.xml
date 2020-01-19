@@ -27,8 +27,8 @@
         android:layout_marginRight="32dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintEnd_toStartOf="@+id/edit_text"
-        app:layout_constraintTop_toTopOf="@+id/edit_text" />
+        app:layout_constraintEnd_toStartOf="@+id/answer_edit"
+        app:layout_constraintTop_toTopOf="@+id/answer_edit" />
 
     <TextView
         android:id="@+id/text_view_2"
@@ -39,8 +39,8 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintStart_toEndOf="@+id/edit_text"
-        app:layout_constraintTop_toTopOf="@+id/edit_text" />
+        app:layout_constraintStart_toEndOf="@+id/answer_edit"
+        app:layout_constraintTop_toTopOf="@+id/answer_edit" />
 
     <TextView
         android:id="@+id/text_view_3"
@@ -49,11 +49,11 @@
         android:layout_marginTop="32dp"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintStart_toStartOf="@+id/edit_text"
-        app:layout_constraintTop_toBottomOf="@+id/edit_text" />
+        app:layout_constraintStart_toStartOf="@+id/answer_edit"
+        app:layout_constraintTop_toBottomOf="@+id/answer_edit" />
 
     <EditText
-        android:id="@+id/edit_text"
+        android:id="@+id/answer_edit"
         android:layout_width="64dp"
         android:layout_height="80dp"
         android:layout_marginTop="32dp"
@@ -87,4 +87,48 @@
         android:text="@string/check_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/random_button" />
+
+    <TextView
+        android:id="@+id/user_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_3" />
+
+    <TextView
+        android:id="@+id/opponent_name_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_name_view" />
+
+    <TextView
+        android:id="@+id/user_score_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_3" />
+
+    <TextView
+        android:id="@+id/opponent_score_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_score_view" />
 </androidx.constraintlayout.widget.ConstraintLayout>

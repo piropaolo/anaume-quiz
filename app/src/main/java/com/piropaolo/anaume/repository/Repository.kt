@@ -14,6 +14,8 @@ object Repository {
         "Andrea",
         "Davide"
     ).shuffled().first()
+    var userScore: Int = 0
 
-    var score: Int = 0
+    var opponentName: String = "Opponent"
+    var opponentScore: Int = 0
 }
