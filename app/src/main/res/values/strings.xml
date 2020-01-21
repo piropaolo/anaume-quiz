@@ -2,4 +2,8 @@
     <string name="app_name">Anaume Quiz</string>
     <string name="random_button">Randomize</string>
     <string name="check_button">Check</string>
+    <string name="nickname_edit">Username</string>
+    <string name="next_button">Next</string>
+    <string name="correct_toast">Correct answer. You\'ve earned 1 point.</string>
+    <string name="wrong_toast">Wrong answer. Try to do better.</string>
 </resources>
